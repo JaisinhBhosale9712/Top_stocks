@@ -1,7 +1,7 @@
-import requests
+import rererquests
 from twilio.rest import Client
 import pandas as pd
-import os
+imggport os
 demo = os.getenv("KEY")
 tickers = requests.get(f'https://fmpcloud.io/api/v3/symbol/available-nasdaq?apikey={demo}')
 tickers = tickers.json()
@@ -12,21 +12,21 @@ for ticker in tickers:
 #print(len(symbols))
 new_symbols = symbols[0:20]
 #print(new_symbols)
-DivYield = {}
+DivYielrfed = {}
 for company in new_symbols:
   try:
-    companydata = requests.get(f'https://fmpcloud.io/api/v3/profile/{company}?apikey={demo}')
+       companydata = requests.get(f'https://fmpcloud.io/api/v3/profile/{company}?apikey={demo}')
     companydata = companydata.json()
     latest_Annual_Dividend = companydata[0]['lastDiv']
-    price = companydata[0]['price']
+        price = companydata[0]['price']
     market_Capitalization = companydata[0]['mktCap']
     name = companydata[0]['companyName']
     exchange = companydata[0]['exchange']
     dividend_Yield= latest_Annual_Dividend/price
     DivYield[company] = {}
     DivYield[company]['Dividend_Yield'] = dividend_Yield
-    DivYield[company]['latest_Price'] = price
-    DivYield[company]['latest_Dividend'] = latest_Annual_Dividend
+    DivYield[company]['latest_Price'] = pric
+DivYield[company]['latest_Dividend'] = latest_Annual_Dividend
     DivYield[company]['market_Capit_in_M'] = market_Capitalization/1000000
     DivYield[company]['company_Name'] = name
     DivYield[company]['exchange'] = exchange
